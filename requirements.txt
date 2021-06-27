@@ -7,5 +7,4 @@ lxml
 webdriver-manager
 beautifulsoup4
 webdriverdownloader
-libglib2
 chromedriver
