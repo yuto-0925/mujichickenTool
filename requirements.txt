@@ -8,4 +8,4 @@ webdriver-manager
 beautifulsoup4
 webdriverdownloader
 chromedriver
-webdriver
+chrome
