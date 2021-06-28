@@ -1,6 +1,6 @@
 streamlit==0.83.0
 selenium==3.141.0
-chromedriver-binary==90.0.4430.24.0
+chromedriver-binary==90.0.4430.212
 lxml==4.6.3
 bs4==0.0.1
 seleniumbase
