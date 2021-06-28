@@ -40,7 +40,7 @@ def mujichicken_insta(username, password, tagName, likedMax):
     driver.implicitly_wait(10)
     time.sleep(1)
 
-    login_objects = driver.mujichicken_insta(
+    login_objects = driver(
         By.CSS_SELECTOR, "input._2hvTZ.pexuQ.zyHYP")
     if login_objects != False:
         login_objects[0].send_keys(username)
