@@ -36,16 +36,14 @@ def mujichicken_insta(username, password, tagName, likedMax):
     driver = webdriver.Chrome(options=options)
 
 #インスタのURLにアクセス
-    driver.get("https://www.instagram.com/accounts/login/")
+    driver.get('https://www.instagram.com/accounts/login/?source=auth_switcher')
     time.sleep(1)
 
 #メアドと、パスワードを入力
-    elem_search_word = driver.find_element_by_name("username")
-    elem_search_word.send_keys("sp_sb0")
-    time.sleep(2)
-    passwords = driver.find_element_by_name("password")
-    passwords.send_keys("Y161634y")
-    time.sleep(2)
+    driver.find_element_by_name('username').send_keys(username)
+    time.sleep(1)
+    driver.find_element_by_name('password').send_keys(password)
+    time.sleep(1)
 
 #ログインボタンを押す
     driver.find_element_by_xpath('//*[@id="loginForm"]/div/div[3]').click()
