@@ -40,9 +40,9 @@ def mujichicken_insta(username, password, tagName, likedMax):
     driver.delete_all_cookies()
 
 #メアドと、パスワードを入力
-    driver.find_element_by_name('username') = str(input(username))
+    driver.find_element_by_name('username').str(input(username))
     time.sleep(1)
-    driver.find_element_by_name('password') = str(input(password))
+    driver.find_element_by_name('password').str(input(password))
     time.sleep(1)
 
 #ログインボタンを押す
