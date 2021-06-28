@@ -20,16 +20,6 @@ def now_time():
 def mujichicken_insta(username, password, tagName, likedMax):
 
     options = webdriver.ChromeOptions()
-    options.add_argument('--headless')
-    options.add_argument('--window-size=1920,1080')
-    options.add_argument('--ignore-ceretificate-errors')
-    options.add_argument('--allow-running-insecure-content')
-    options.add_argument('--disable-extensions')
-    options.add_argument("--proxy-server='direct://'")
-    options.add_argument('--proxy-bypass-list=*')
-    options.add_argument('--disable-gpu')
-    options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--no-sandbox')
     
 #ブラウザに接続
     driver = webdriver.Chrome(options=options)
@@ -43,9 +33,9 @@ def mujichicken_insta(username, password, tagName, likedMax):
     driver.delete_all_cookies()
 
 #メアドと、パスワードを入力
-    driver.find_element_by_xpath('//*[@id="loginForm"]/div/div[1]/div/label/input').send_keys(username)
+    driver.find_element_by_name('username').send_keys(username)
     time.sleep(1)
-    driver.find_element_by_xpath('//*[@id="loginForm"]/div/div[2]/div/label/input').send_keys(password)
+    driver.find_element_by_name('password').send_keys(password)
     time.sleep(1)
 
 #ログインボタンを押す
