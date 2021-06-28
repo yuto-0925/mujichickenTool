@@ -1,7 +1,7 @@
 import streamlit as st
 import mujichicken
 
-st.title('Auto Instagram by Mujichiken')
+st.title('Mujichicken Auto-Instagram')
 
 username=st.text_input('Username')
 password=st.text_input("Password", type="password")
