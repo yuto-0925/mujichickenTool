@@ -18,7 +18,7 @@ def now_time():
 def mujichicken_insta(username, password, tagName, likedMax):
 
 #ブラウザに接続
-    driver = webdriver.Chrome()
+    driver = open("https://www.google.com/")
 
 #インスタのURLにアクセス
     driver.get("https://www.instagram.com/accounts/login/")
