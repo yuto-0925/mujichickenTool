@@ -37,7 +37,7 @@ def mujichicken_insta(username, password, tagName, likedMax):
 
 #インスタのURLにアクセス
     driver.get('https://www.instagram.com/accounts/login/?source=auth_switcher')
-    time.sleep(1)
+    time.sleep(5)
 
 #メアドと、パスワードを入力
     driver.find_element_by_name('username').send_keys(username)
