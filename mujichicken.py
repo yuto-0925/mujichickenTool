@@ -20,7 +20,7 @@ def now_time():
 def mujichicken_insta(username, password, tagName, likedMax):
 
     options = webdriver.ChromeOptions()
-    options.add_argument("--headless")
+    options.headless = True
 
 #ブラウザに接続
     driver = webdriver.Chrome(options=options)
@@ -28,7 +28,7 @@ def mujichicken_insta(username, password, tagName, likedMax):
 #インスタのURLにアクセス
     driver.get('https://www.instagram.com/accounts/login/?source=auth_switcher')
     st.write(now_time()+'instagramにアクセス')
-    driver.implicitly_wait(30)
+    driver.implicitly_wait(10)
     time.sleep(5)
 
 #メアドと、パスワードを入力
