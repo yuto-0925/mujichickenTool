@@ -19,6 +19,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.utils import ChromeType
+import selenium
 
 #現在時刻を出力する関数
 def now_time():
@@ -32,7 +33,7 @@ def mujichicken_insta(username, password, tagName, likedMax):
     options.add_argument("--no-sandbox")
 
 #ブラウザに接続
-    driver = webdriver.Chrome(options=options)
+    driver = webdriver.Chrome()
 
 #インスタのURLにアクセス
     driver.get("https://www.instagram.com/accounts/login/")
