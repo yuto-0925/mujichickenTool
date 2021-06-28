@@ -20,7 +20,7 @@ def now_time():
 
 def mujichicken_insta(username, password, tagName, likedMax):
 
-    options = webdriver.ChromeOptions()
+    options = Options()
     
 #ブラウザに接続
     driver = webdriver.Chrome(executable_path=os.getcwd() +"/chromedriver", options=options)
