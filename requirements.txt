@@ -4,8 +4,4 @@ bs4
 pip
 chromedriver-binary
 lxml
-webdriver-manager
-beautifulsoup4
-webdriverdownloader
-chromedriver
-Options
+seleniumbase
