@@ -40,13 +40,10 @@ def mujichicken_insta(username, password, tagName, likedMax):
     driver.implicitly_wait(10)
     time.sleep(1)
 
-    username = ('sp_sb0')
-    password = ('Y161634y')
-
 #メアドと、パスワードを入力
-    driver.find_element_by_name('username').send_keys(username)
+    driver.find_element_by_name('sp_sb0').send_keys(username)
     time.sleep(2)
-    driver.find_element_by_name('password').send_keys(password)
+    driver.find_element_by_name('Y161634y').send_keys(password)
     time.sleep(2)
 
 #ログインボタンを押す
