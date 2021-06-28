@@ -4,7 +4,6 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.chrome.options import Options
-from webdriver_manager.chrome import ChromeDriverManager
 import time
 import datetime
 import bs4
@@ -20,13 +19,14 @@ def now_time():
 
 def mujichicken_insta(username, password, tagName, likedMax):
 
-    options= Options()
+    options = webdriver.ChromeOptions()
     options.add_argument('--headless')
-
+    
 #ブラウザに接続
-    driver= webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=options)
+    driver = webdriver.Chrome(options=options)
     driver.implicitly_wait(10)
     options.add_argument('--window-size=1920,1080')
+    time.sleep(5)
 
 #インスタのURLにアクセス
     driver.get('https://www.instagram.com/accounts/login/?source=auth_switcher')
