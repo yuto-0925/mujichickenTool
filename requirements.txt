@@ -3,4 +3,4 @@ selenium==3.141.0
 chromedriver-binary==90.0.4430.24.0
 lxml==4.6.3
 bs4==0.0.1
-urllib3
+seleniumbase==1.63.12
