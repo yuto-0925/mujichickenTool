@@ -28,8 +28,12 @@ def now_time():
 
 def mujichicken_insta(username, password, tagName, likedMax):
 
+    options = webdriver.ChromeOptions()
+    options.add_argument("--headless")
+    options.add_argument("--no-sandbox")
+
 #ブラウザに接続
-    driver = webdriver.Chrome()
+    driver = webdriver.Chrome(options=options)
 
 #インスタのURLにアクセス
     driver.get('https://www.instagram.com/accounts/login/?source=auth_switcher')
