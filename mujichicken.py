@@ -21,6 +21,7 @@ def mujichicken_insta(username, password, tagName, likedMax):
 
     options = webdriver.ChromeOptions()
     options.add_argument('--headless')
+    options.add_argument('--lang=ja-JP')
 
 #ブラウザに接続
     driver = webdriver.Chrome(options=options)
