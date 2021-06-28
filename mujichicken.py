@@ -41,10 +41,10 @@ def mujichicken_insta(username, password, tagName, likedMax):
     driver.delete_all_cookies()
 
 #メアドと、パスワードを入力
-    user = driver.find_element_by_xpath('//*[@id="loginForm"]/div/div[1]/div/label/input')
+    user = driver.find_element_by_css_selector('#loginForm > div > div:nth-child(1) > div > label > input')
     user.send_keys(username)
     time.sleep(1)
-    passwords = driver.find_element_by_xpath('//*[@id="loginForm"]/div/div[2]/div/label/input')
+    passwords = driver.find_element_by_css_selector('#loginForm > div > div:nth-child(2) > div > label > input')
     passwords.send_keys(password)
     time.sleep(1)
 
