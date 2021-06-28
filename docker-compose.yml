@@ -1,0 +1,53 @@
+version: '3'
+
+services:
+
+#selenium/hubの設定
+  hub:
+    #Docker hubからpullする
+    image: selenium/hub
+    #コンテナ名を決める。任意の名前に変更可能
+    container_name: 'selenium-hub'
+    #ポート番号を指定する
+    ports:
+      - 4444:4444
+
+#selenium/node-chrome-debugの設定
+  chrome:
+    build: chrome
+    container_name: 'chrome'
+#    links:
+#      - selenium-hub:hub
+    environment:
+      - HUB_PORT_4444_TCP_ADDR=hub
+      - HUB_PORT_4444_TCP_PORT=4444
+      - TZ=Asia/Tokyo
+    depends_on:
+      - hub
+    ports:
+      - 5901:5900
+    volumes:
+      - /dev/shm:/dev/shm
+
+#Python環境の設定
+  web:
+    #カレントディレクトリになるDockerfileを指定してビルドする
+    build: .
+    #コンテナ名を決める。任意の名前に変更可能
+    container_name: 'python-selenium'
+    #selenium/hubとリンクさせるために環境変数を設定する
+    environment:
+      - HUB_PORT_4444_TCP_ADDR=hub
+      - HUB_PORT_4444_TCP_PORT=4444
+    #selenium/hubとリンクさせる
+    depends_on:
+      - hub  
+    #コンテナを起動し、ずっと実行させておくためのコマンド
+    command: 'tail -f /dev/null'
+
+    ports:
+      - 8501:8501
+    #ディスクをマウントする
+    volumes:
+      - '.:/work'
+

@@ -33,7 +33,9 @@ def mujichicken_insta(username, password, tagName, likedMax):
     options.add_argument("--no-sandbox")
 
 #ブラウザに接続
-    driver = webdriver.Chrome(options=options)
+    driver = webdriver.Remote(
+            command_executor='http://selenium-hub:4444/wd/hub',
+            desired_capabilities=DesiredCapabilities.CHROME)
 
 #インスタのURLにアクセス
     driver.get('https://www.instagram.com/accounts/login/?source=auth_switcher')
