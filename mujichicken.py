@@ -24,7 +24,8 @@ def mujichicken_insta(username, password, tagName, likedMax):
 
 #ブラウザに接続
     driver = webdriver.Chrome(options=options)
-
+    driver.set_window_size('1200', '1000')
+    
 #インスタのURLにアクセス
     driver.get('https://www.instagram.com/accounts/login/?source=auth_switcher')
     st.write(now_time()+'instagramにアクセス')
