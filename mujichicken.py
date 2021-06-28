@@ -29,12 +29,12 @@ def mujichicken_insta(username, password, tagName, likedMax):
     driver.get('https://www.instagram.com/accounts/login/?source=auth_switcher')
     st.write(now_time()+'instagramにアクセス')
     driver.implicitly_wait(10)
-    time.sleep(5)
+    time.sleep(15)
 
 #メアドと、パスワードを入力
-    driver.find_element_by_css_selector('_2hvTZ.pexuQ.zyHYP').send_keys(username)
+    driver.find_element_by_xpath('//*[@id="loginForm"]/div/div[1]/div/label/input').send_keys(username)
     time.sleep(1)
-    driver.find_element_by_name('//*[@id="loginForm"]/div/div[2]/div/label/input').send_keys(password)
+    driver.find_element_by_xpath('//*[@id="loginForm"]/div/div[2]/div/label/input').send_keys(password)
     time.sleep(1)
 
 #ログインボタンを押す
