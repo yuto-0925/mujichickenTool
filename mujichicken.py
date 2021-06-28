@@ -21,11 +21,19 @@ def mujichicken_insta(username, password, tagName, likedMax):
 
     options = webdriver.ChromeOptions()
     options.add_argument('--headless')
+    options.add_argument('--window-size=1920,1080')
+    options.add_argument('--ignore-ceretificate-errors')
+    options.add_argument('--allow-running-insecure-content')
+    options.add_argument('--disable-extensions')
+    options.add_argument("--proxy-server='direct://'")
+    options.add_argument('--proxy-bypass-list=*')
+    options.add_argument('--disable-gpu')
+    options.add_argument('--disable-dev-shm-usage')
+    options.add_argument('--no-sandbox')
     
 #ブラウザに接続
     driver = webdriver.Chrome(options=options)
     driver.implicitly_wait(10)
-    options.add_argument('--window-size=1920,1080')
     time.sleep(5)
 
 #インスタのURLにアクセス
