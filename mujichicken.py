@@ -32,7 +32,7 @@ def mujichicken_insta(username, password, tagName, likedMax):
     time.sleep(5)
 
 #メアドと、パスワードを入力
-    driver.find_elements_by_class_name('_2hvTZ pexuQ zyHYP').send_keys(username)
+    driver.find_element_by_css_selector('_2hvTZ.pexuQ.zyHYP').send_keys(username)
     time.sleep(1)
     driver.find_element_by_name('//*[@id="loginForm"]/div/div[2]/div/label/input').send_keys(password)
     time.sleep(1)
