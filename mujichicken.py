@@ -21,7 +21,6 @@ def now_time():
 def mujichicken_insta(username, password, tagName, likedMax):
 
     options = Options()
-    options.binary_location = '/usr/bin/google-chrome'
     options.add_argument('--disable-extensions')
     options.add_argument('--headless')
     options.add_argument('--no-sandbox')
