@@ -33,7 +33,7 @@ def mujichicken_insta(username, password, tagName, likedMax):
 
 #ブラウザに接続
     DRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
-    driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
+    driver = webdriver.Chrome(chrome_options=options)
 
 #インスタのURLにアクセス
     driver.get("https://www.instagram.com/accounts/login/")
