@@ -27,7 +27,12 @@ def now_time():
 
 def mujichicken_insta(username, password, tagName, likedMax):
 
+    options = Options()
+    options.add_argument("--headless")
+    options.add_argument("--no-sandbox")
+
 #ブラウザに接続
+    DRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
     driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
 
 #インスタのURLにアクセス
