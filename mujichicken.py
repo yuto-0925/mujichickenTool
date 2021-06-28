@@ -8,6 +8,7 @@ import time
 import datetime
 import bs4
 import random
+from webdriver_manager.chrome import ChromeDriverManager
 
 import streamlit as st
 
@@ -19,10 +20,10 @@ def now_time():
 
 def mujichicken_insta(username, password, tagName, likedMax):
 
-    options = webdriver.ChromeOptions()
+    options= Options()
     
 #ブラウザに接続
-    driver = webdriver.Chrome(options=options)
+    driver= webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=options)
     driver.implicitly_wait(10)
     options.add_argument('--window-size=1920,1080')
     time.sleep(5)
