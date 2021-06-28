@@ -8,7 +8,6 @@ import time
 import datetime
 import bs4
 import random
-from webdriver_manager.chrome import ChromeDriverManager
 
 import streamlit as st
 
@@ -20,10 +19,10 @@ def now_time():
 
 def mujichicken_insta(username, password, tagName, likedMax):
 
-    options= Options()
+    options = webdriver.ChromeOptions()
     
 #ブラウザに接続
-    driver= webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=options)
+    driver = webdriver.Chrome(options=options)
     driver.implicitly_wait(10)
     options.add_argument('--window-size=1920,1080')
     time.sleep(5)
@@ -32,6 +31,7 @@ def mujichicken_insta(username, password, tagName, likedMax):
     driver.get('https://www.instagram.com/accounts/login/?source=auth_switcher')
     st.write(now_time()+'instagramにアクセス')
     driver.implicitly_wait(10)
+    driver.delete_all_cookies()
 
 #メアドと、パスワードを入力
     driver.find_element_by_xpath('//*[@id="loginForm"]/div/div[1]/div/label/input').send_keys(username)
