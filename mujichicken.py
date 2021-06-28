@@ -19,7 +19,7 @@ def now_time():
 def mujichicken_insta(username, password, tagName, likedMax):
 
 #ブラウザに接続
-    url = open("https://www.google.com/")
+    url = webbrowser.get('google-chrome')
 
 #インスタのURLにアクセス
     url.get("https://www.instagram.com/accounts/login/")
