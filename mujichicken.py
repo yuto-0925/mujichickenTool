@@ -31,11 +31,9 @@ def mujichicken_insta(username, password, tagName, likedMax):
     time.sleep(5)
 
 #メアドと、パスワードを入力
-    name = driver.find_element_by_name('username')
-    name.send_keys(username)
+    driver.find_element_by_xpath('//*[@id="loginForm"]/div/div[1]/div/label/input').send_keys(username)
     time.sleep(1)
-    passwords = driver.find_element_by_name('password')
-    passwords.send_keys(password)
+    driver.find_element_by_name('//*[@id="loginForm"]/div/div[2]/div/label/input').send_keys(password)
     time.sleep(1)
 
 #ログインボタンを押す
