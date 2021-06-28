@@ -24,7 +24,7 @@ def mujichicken_insta(username, password, tagName, likedMax):
     options.add_argument('--headless')
 
 #ブラウザに接続
-    driver= webdriver.Chrome(ChromeDriverManager().install())
+    driver= webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=options)
     driver.implicitly_wait(10)
     options.add_argument('--window-size=1920,1080')
 
