@@ -17,6 +17,8 @@ from selenium.webdriver.common.alert import Alert
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.utils import ChromeType
 
 #現在時刻を出力する関数
 def now_time():
@@ -25,16 +27,8 @@ def now_time():
 
 def mujichicken_insta(username, password, tagName, likedMax):
 
-    options = Options()
-    options.add_argument('--disable-gpu')
-    options.add_argument('--disable-extensions')
-    options.add_argument('--proxy-server="direct://"')
-    options.add_argument('--proxy-bypass-list=*')
-    options.add_argument('--start-maximized')
-
 #ブラウザに接続
-    DRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
-    driver = webdriver.Chrome(executable_path=DRIVER_PATH, chrome_options=options)
+    driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
 
 #インスタのURLにアクセス
     driver.get("https://www.instagram.com/accounts/login/")
