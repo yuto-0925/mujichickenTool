@@ -20,9 +20,10 @@ def now_time():
 def mujichicken_insta(username, password, tagName, likedMax):
 
     options = webdriver.ChromeOptions()
+    chrome_options = Options()
     
 #ブラウザに接続
-    driver = webdriver.Chrome(options=options)
+    driver = webdriver.Chrome(chrome_options=chrome_options, options=options)
     driver.implicitly_wait(10)
     time.sleep(5)
 
