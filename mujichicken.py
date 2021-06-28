@@ -20,10 +20,20 @@ def now_time():
 
 def mujichicken_insta(username, password, tagName, likedMax):
 
+    CHROME_BIN = "/usr/bin/chromium-browser"
+    CHROME_DRIVER = '/usr/lib/chromium-browser/chromedriver'
     options = Options()
+    options.binary_location = CHROME_BIN
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("start-maximized")
+    options.add_argument("disable-infobars")
+    options.add_argument("--disable-extensions")
+    options.add_argument("--disable-gpu")
+    options.add_argument("--no-sandbox")
+    options.add_argument('--headless')
     
 #ブラウザに接続
-    driver = webdriver.Chrome(executable_path=os.getcwd() +"/chromedriver", options=options)
+    driver = webdriver.Chrome(CHROME_DRIVER, options=options)
     driver.implicitly_wait(10)
     time.sleep(5)
 
