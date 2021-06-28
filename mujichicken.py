@@ -9,7 +9,14 @@ import bs4
 import random
 import chromedriver_binary
 import streamlit as st
-import webbrowser
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.select import Select
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.alert import Alert
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
 
 #現在時刻を出力する関数
 def now_time():
@@ -18,37 +25,44 @@ def now_time():
 
 def mujichicken_insta(username, password, tagName, likedMax):
 
+    options = Options()
+    options.add_argument('--disable-gpu')
+    options.add_argument('--disable-extensions')
+    options.add_argument('--proxy-server="direct://"')
+    options.add_argument('--proxy-bypass-list=*')
+    options.add_argument('--start-maximized')
+
 #ブラウザに接続
-    url = webbrowser.get('google-chrome')
+    driver = webdriver.Chrome()
 
 #インスタのURLにアクセス
-    url.get("https://www.instagram.com/accounts/login/")
-    url.implicitly_wait(10)
+    driver.get("https://www.instagram.com/accounts/login/")
+    driver.implicitly_wait(10)
     time.sleep(1)
 
 #メアドと、パスワードを入力
-    url.find_element_by_name('username').send_keys(username)
+    driver.find_element_by_name('username').send_keys(username)
     time.sleep(2)
-    url.find_element_by_name('password').send_keys(password)
+    driver.find_element_by_name('password').send_keys(password)
     time.sleep(2)
 
 #ログインボタンを押す
-    url.find_element_by_xpath('//*[@id="loginForm"]/div/div[3]').click()
+    driver.find_element_by_xpath('//*[@id="loginForm"]/div/div[3]').click()
     time.sleep(3)
     st.write(now_time()+'instagramにログイン')
     time.sleep(1)
 
 #タグ検索
     instaurl = 'https://www.instagram.com/explore/tags/'
-    url.get(instaurl + tagName)
+    driver.get(instaurl + tagName)
 
     time.sleep(3)
     st.write(now_time()+'tagで検索中')
     time.sleep(1)
 
 #最新の投稿に画面をスクロール
-    target = url.find_elements_by_class_name('_9AhH0')[10]
-    actions = ActionChains(url)
+    target = driver.find_elements_by_class_name('_9AhH0')[10]
+    actions = ActionChains(driver)
     actions.move_to_element(target)
     actions.perform()
     st.write(now_time()+'最新の投稿まで画面移動')
@@ -56,20 +70,20 @@ def mujichicken_insta(username, password, tagName, likedMax):
 
 #すでにいいねしたかをチェック
     def check_Like():
-        html = url.page_source.encode('utf-8')
+        html = driver.page_source.encode('utf-8')
         soup = bs4.BeautifulSoup(html, "lxml")
         a = soup.select('span.fr66n')
         return  not '取り消す' in str(a[0])
 
 #最初の投稿にいいねする
     try:
-        url.find_elements_by_class_name('_9AhH0')[9].click()
+        driver.find_elements_by_class_name('_9AhH0')[9].click()
         time.sleep(random.randint(3, 5))
         st.write(now_time()+'投稿をクリック')
         time.sleep(4)
 
         if check_Like():
-            url.find_element_by_class_name('fr66n').click()
+            driver.find_element_by_class_name('fr66n').click()
             st.write(now_time()+'投稿をいいね(1回目)')
             time.sleep(random.randint(3, 5))
         else:
@@ -81,7 +95,7 @@ def mujichicken_insta(username, password, tagName, likedMax):
 #次へボタンを押して、いいねを繰り返す
     for i in range(likedMax-1):
         try:
-            url.find_element_by_class_name('coreSpriteRightPaginationArrow').click()
+            driver.find_element_by_class_name('coreSpriteRightPaginationArrow').click()
             st.write(now_time()+'次の投稿へ移動')
             time.sleep(random.randint(3, 5))
 
@@ -91,7 +105,7 @@ def mujichicken_insta(username, password, tagName, likedMax):
 
         try:
             if check_Like():
-                url.find_element_by_class_name('fr66n').click()
+                driver.find_element_by_class_name('fr66n').click()
                 st.write(now_time()+'投稿をいいね({}回目)'.format(i+2))
                 time.sleep(random.randint(3, 5))
             else:
@@ -102,5 +116,5 @@ def mujichicken_insta(username, password, tagName, likedMax):
 
 ## 処理終了
     st.write(now_time()+'終了させてもろて')
-    url.close()
-    url.quit()
+    driver.close()
+    driver.quit()
