@@ -30,7 +30,7 @@ def mujichicken_insta(username, password, tagName, likedMax):
     options.add_argument('--disable-setuid-sandbox')
     
 #ブラウザに接続
-    driver = webdriver.Chrome(options=options, executable_path='/usr/local/bin/chromedriver') 
+    driver = webdriver.Chrome('chromedriver', chrome_options=options)
     driver.implicitly_wait(10)
     time.sleep(5)
 
