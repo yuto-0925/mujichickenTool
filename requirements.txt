@@ -8,3 +8,5 @@ webdriver-manager
 beautifulsoup4
 webdriverdownloader
 chromedriver
+expected_conditions
+Options

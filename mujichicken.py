@@ -33,7 +33,8 @@ def mujichicken_insta(username, password, tagName, likedMax):
     options.add_argument('--start-maximized')
 
 #ブラウザに接続
-    driver = webdriver.Chrome()
+    DRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
+    driver = webdriver.Chrome(executable_path=DRIVER_PATH, chrome_options=options)
 
 #インスタのURLにアクセス
     driver.get("https://www.instagram.com/accounts/login/")
