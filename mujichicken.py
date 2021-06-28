@@ -9,7 +9,7 @@ import datetime
 import bs4
 import random
 import os
-from selenium.webdriver.common.keys import Keys
+
 import streamlit as st
 
 
@@ -22,7 +22,6 @@ def mujichicken_insta(username, password, tagName, likedMax):
 
     options = Options()
     options.add_argument('--disable-extensions')
-    options.add_argument("--start-maximized")
     options.add_argument('--headless')
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
@@ -41,11 +40,9 @@ def mujichicken_insta(username, password, tagName, likedMax):
     driver.delete_all_cookies()
 
 #メアドと、パスワードを入力
-    user = driver.find_element_by_css_selector('#loginForm > div > div:nth-child(1) > div > label > input')
-    user.send_keys(username)
+    driver.find_element_by_name('username') = str(input(username))
     time.sleep(1)
-    passwords = driver.find_element_by_css_selector('#loginForm > div > div:nth-child(2) > div > label > input')
-    passwords.send_keys(password)
+    driver.find_element_by_name('password') = str(input(password))
     time.sleep(1)
 
 #ログインボタンを押す
