@@ -8,6 +8,7 @@ import time
 import datetime
 import bs4
 import random
+import os
 
 import streamlit as st
 
@@ -22,7 +23,7 @@ def mujichicken_insta(username, password, tagName, likedMax):
     options = webdriver.ChromeOptions()
     
 #ブラウザに接続
-    driver = webdriver.Chrome('/usr/lib/chromium-browser/chromedriver', options=options)
+    driver = webdriver.Chrome(executable_path=os.getcwd() +"/chromedriver", options=options)
     driver.implicitly_wait(10)
     time.sleep(5)
 
