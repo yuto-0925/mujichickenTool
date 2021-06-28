@@ -8,6 +8,7 @@ import time
 import datetime
 import bs4
 import random
+from selenium.webdriver.common.keys import Keys
 import os
 
 import streamlit as st
@@ -40,9 +41,11 @@ def mujichicken_insta(username, password, tagName, likedMax):
     driver.delete_all_cookies()
 
 #メアドと、パスワードを入力
-    driver.find_element_by_name('username').str(input(username))
+    user = driver.find_element_by_xpath('//input[@name="username"]')
+    user.send_key(username)
     time.sleep(1)
-    driver.find_element_by_name('password').str(input(password))
+    passwords = driver.find_element_by_xpath('//input[@name="password"]')
+    passwords.send_key(password)
     time.sleep(1)
 
 #ログインボタンを押す
